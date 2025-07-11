@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/shahidansari310/backend/issues"
   },
-  "homepage": "https://github.com/shahidansari310/backend#readme"
+  "homepage": "https://github.com/shahidansari310/backend#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
