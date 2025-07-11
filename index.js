@@ -7,7 +7,8 @@ const port =3000;
 // })
 
 app.get('/',(req,res)=>{
-    res.sendFile('D:/Node/dummy.html');
+    // res.sendFile('D:/Node/dummy.html');
+    res.json({X:1,Y:2,Z:3});
 })
 
 app.get('/about',(req,res)=>{
