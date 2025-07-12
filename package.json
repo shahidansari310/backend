@@ -20,6 +20,7 @@
   "homepage": "https://github.com/shahidansari310/backend#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "mongodb": "^6.17.0",
     "nodemon": "^3.1.10"
   }
 }
