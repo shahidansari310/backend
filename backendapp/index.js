@@ -15,7 +15,8 @@ app.use(logging);
 
 const auth=function(req,res,next){
     console.log("Auth");
-    next();
+    res.send("Chalo sidha ghr");
+    // next();
 }
 app.use(auth);
 
