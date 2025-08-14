@@ -2,10 +2,10 @@
   "name": "new",
   "version": "1.0.0",
   "description": "",
-  "main": "back.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node back.js",
-    "dev": "nodemon back.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
