@@ -1,10 +1,13 @@
 const express=require("express")
 const app=express() 
 const path = require("path"); 
-const PORT=4000
 const birds=require("./routes/birds")
+require("dotenv").config();
+const PORT=process.env.PORT || 3000
 
 app.use(express.json())
+
+require("./config/database").connectdb()
 
 app.use("/v1",birds);
 
