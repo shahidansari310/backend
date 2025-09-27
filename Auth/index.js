@@ -1,7 +1,8 @@
 const express=require("express")
 const app=express() 
-const path = require("path"); 
+const user=require("./routes/user")
 const birds=require("./routes/birds")
+const path = require("path"); 
 require("dotenv").config();
 const PORT=process.env.PORT || 3000
 
@@ -9,6 +10,7 @@ app.use(express.json())
 
 require("./config/database").connectdb()
 
+app.use("/auth",user)
 app.use("/v1",birds);
 
 app.get("/",(req,res)=>{
