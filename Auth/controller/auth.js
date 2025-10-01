@@ -57,7 +57,7 @@ exports.login=async(req,res)=>{
             });
         }
 
-        const user=await User.findOne({email});
+        let user=await User.findOne({email});
         if(!user){
             res.status(401).json({
                 success:false,
@@ -79,6 +79,7 @@ exports.login=async(req,res)=>{
                             expiresIn:"2h"
                         });
             //Added a new field token and remove passsword or marked password as undefined in user object not from the database
+            user=user.toObject();
             user.token=token;
             user.password=undefined;
 
