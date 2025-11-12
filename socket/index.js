@@ -1,6 +1,6 @@
 //creating a module
-const http=require("http");
 const express=require("express")
+const http=require("http");
 const path=require("path");
 
 //install socket.io
@@ -25,7 +25,7 @@ io.on('connection',(socket)=>{
 app.use(express.static(path.resolve("./public")));
 
 app.get("/",(req,res)=>{
-    return res.sendFile("\public\index.html");
+    return res.sendFile(path.join(__dirname, "public", "index.html"));
 })
 
 server.listen(PORT,()=>{
