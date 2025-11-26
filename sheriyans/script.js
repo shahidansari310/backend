@@ -30,3 +30,7 @@ fs.unlink("copy.txt",(e)=>{
     if(e) console.log(e.message);
     else console.log("Done");
 });
+
+fs.rm("./copy",{recursive:true},()=>{
+    
+}) //remove folder had to add recursive is true for folder containing items
