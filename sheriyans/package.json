@@ -1,0 +1,13 @@
+{
+  "name": "backend-new",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "dev":"node script.js",
+    "test": ""
+  }
+}
