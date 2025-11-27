@@ -2,6 +2,8 @@ const express=require('express');
 const app=express();
 const PORT=3000;
 const path=require('path');
+const fs=require('fs');
+const { log } = require('console');
 
 //parsers
 app.use(express.json());
@@ -10,12 +12,20 @@ app.use(express.static(path.join(__dirname,'public')));
 app.set('view engine','ejs'); //to render ejs pages that is like html pages
 
 app.get('/',(req,res)=>{
-    res.render('index');
+    fs.readdir(`./files`, function(err,file){
+        res.render('index',{files:file});
+    })
 })
 
 app.get('/profile/:user',(req,res)=>{
     // req.params.user
     res.send(`Hello for the ${req.params.user} user!`);
+})
+
+app.post('/create',(req,res)=>{
+    fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`,req.body.details,(err)=>{
+        res.redirect('/');
+    })
 })
 
 app.get('/profile/:user/:age',(req,res)=>{
