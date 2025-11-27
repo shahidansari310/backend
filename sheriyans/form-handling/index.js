@@ -17,10 +17,10 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.get('/profile/:user',(req,res)=>{
-    // req.params.user
-    res.send(`Hello for the ${req.params.user} user!`);
-})
+// app.get('/profile/:user',(req,res)=>{
+//     // req.params.user
+//     res.send(`Hello for the ${req.params.user} user!`);
+// })
 
 app.post('/create',(req,res)=>{
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`,req.body.details,(err)=>{
@@ -28,9 +28,15 @@ app.post('/create',(req,res)=>{
     })
 })
 
-app.get('/profile/:user/:age',(req,res)=>{
-    res.send(req.params);
+app.get("/files/:filename",(req,res)=>{
+    fs.readFile(`./files/${req.params.filename}`,"utf-8",(err,data)=>{
+        res.render('show',{filename:req.params.filename, filedata:data});
+    })
 })
+
+// app.get('/profile/:user/:age',(req,res)=>{
+//     res.send(req.params);
+// })
 
 app.listen(PORT,()=>{
     console.log(`App running on port :${PORT}`);
