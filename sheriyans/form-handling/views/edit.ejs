@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+
+<body class="bg-zinc-900 text-white">
+
+    <div class="min-h-screen p-10 text-white tracking-tighter">
+        <a href="/" class="text-blue-600 inline-block mb-3">Go back to Home</a>
+        <form action="/edit" method="post">
+                <input class=" text-zinc-400 block w-3/4 px-5 py-3 bg-zinc-600 rounded-md outline-none focus:bg-zinc-600 transition"
+                    type="text" placeholder="Previous Name" name="prev" value="<%= filename%>">
+                <input class="mt-2 block w-3/4 px-5 py-3 bg-zinc-700 rounded-md outline-none focus:bg-zinc-600 transition"
+                    type="text" placeholder="New Name" name="new">
+
+                <input
+                    class="mt-4 w-2/4 py-3 bg-yellow-600 hover:bg-blue-700 transition cursor-pointer rounded-xl font-semibold"
+                    type="submit" value="Update Name">
+            </form>
+    </div>
+    <script src="/javascript/script.js"></script>
+</body>
+
+</html>
