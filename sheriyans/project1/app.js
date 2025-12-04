@@ -24,6 +24,26 @@ app.get('/profile',isLoggerIn,async (req,res)=>{
     res.render('profile',{user});
 })
 
+app.get('/like/:id',isLoggerIn,async (req,res)=>{
+    let post=await postModel.findOne({_id:req.params.id}).populate("user");
+
+    if(post.likes.indexOf(req.user.userid)=== -1 ){
+        post.likes.push(req.user.userid);
+    }
+    else{
+        post.likes.splice(post.likes.indexOf(req.user.userid),1);
+    }
+
+    await post.save();
+    res.redirect('/profile');
+})
+
+app.get('/edit/:id',isLoggerIn,async (req,res)=>{
+    let post=await postModel.findOne({_id:req.params.id}).populate("user");
+
+    res.render('edit', {post})
+})
+
 app.post('/post',isLoggerIn,async (req,res)=>{
     let user=await userModel.findOne({email:req.user.email});
 
@@ -37,6 +57,12 @@ app.post('/post',isLoggerIn,async (req,res)=>{
     user.posts.push(post._id);
     await user.save();
     res.redirect('/profile');
+})
+
+
+app.post('/update/:id',isLoggerIn,async (req,res)=>{
+    let post=await postModel.findOneAndUpdate({_id:req.params.id},{content:req.body.content});
+    res.redirect("/profile")
 })
 
 app.post("/register",async (req,res)=>{
