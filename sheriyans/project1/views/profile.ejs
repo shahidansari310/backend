@@ -7,11 +7,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <div class="bg-zinc-800 h-full w-full text-white p-4">
+    <div class="bg-zinc-800 h-full w-full text-white p-4 item-center">
         <a href="/logout" class="bg-red-400 px-3 py-2 rounded-lg text-[12px]">Logout</a>
+        <div class="flex mt-4">
+        <div class="w-15 h-15">
+            <img class="w-full h-full object-cover rounded-xl" src="./images/uploads/<%= user.profile %>" alt="">
+        </div>
         <h3 class="text-3xl mt-5">
             👋 Hello , <%= user.name%>
         </h3>
+    </div>
+    <a href="/profile/upload" class="text-blue-500">Upload profile image</a>
         <h5 class="m-3">You can create a new post</h5>
         <form action="/post" method="post">
             <textarea placeholder="what's in your mind" class="resize-none bg-transparent outline-none border-2 border-zinc-600 rounded-md p-1" cols="40"  rows="5" name="content" id=""></textarea>

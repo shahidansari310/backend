@@ -7,6 +7,7 @@ const path=require("path");
 const bcrypt=require("bcrypt");
 const jwt=require('jsonwebtoken');
 const PORT=3000;
+const upload=require('./config/multer.config');
  
 app.set("view engine","ejs");
 app.use(express.json());
@@ -22,7 +23,18 @@ app.get('/profile',isLoggerIn,async (req,res)=>{
     // console.log(req.user);
     let user=await userModel.findOne({email:req.user.email}).populate("posts");
     res.render('profile',{user});
-})
+});
+
+app.get('/profile/upload',(req,res)=>{
+    res.render('profileupload')
+});
+
+app.post('/upload',isLoggerIn,upload.single('image'),async (req,res)=>{
+    let user=await userModel.findOne({email:req.user.email});
+    user.profile=req.file.filename;
+    user.save();
+    res.redirect("/profile");
+});
 
 app.get('/like/:id',isLoggerIn,async (req,res)=>{
     let post=await postModel.findOne({_id:req.params.id}).populate("user");
